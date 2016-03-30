@@ -19,11 +19,11 @@ add_definitions(-Dfmjp2k_EXPORTS)
 set(fmjp2k_HEADERS
 	fmjp2kcd.h
 	fmjp2kcp.h
-	fmjp2kcrg.h	
+	fmjp2kcrg.h
 )
 
 set(fmjp2k_SRCS
-    ${fmjp2k_HEADERS}    
+    ${fmjp2k_HEADERS}
 	fmjp2kcd.cpp
 	fmjp2kcp.cpp
 	fmjp2kcrg.cpp
@@ -31,10 +31,10 @@ set(fmjp2k_SRCS
 
 if(WIN32)
 	add_definitions(-D_BIND_TO_CURRENT_VCLIBS_VERSION=1)
+	add_definitions(-DJAS_WIN_MSVC_BUILD)
 endif()
 
 #JASPER stuff
-add_definitions(-DJAS_WIN_MSVC_BUILD)
 add_definitions(-DEXCLUDE_MIF_SUPPORT)
 add_definitions(-DEXCLUDE_PNM_SUPPORT)
 add_definitions(-DEXCLUDE_BMP_SUPPORT)
@@ -46,10 +46,10 @@ add_library(fmjp2k ${fmjp2k_SRCS})
 set(fmjp2k_LIBRARY_NAME fmjp2k)
 TARGET_LINK_LIBRARIES(fmjp2k
 	${DCMTK_LIBRARIES}
-	
+
 	)
-	
-include(GenerateExportHeader)	
+
+include(GenerateExportHeader)
 generate_export_header(fmjp2k)
 set_property(TARGET fmjp2k PROPERTY VERSION ${fmjp2k_VERSION})
 set_property(TARGET fmjp2k PROPERTY SOVERSION 1)
@@ -83,7 +83,7 @@ write_basic_package_version_file(
 )
 
 export(EXPORT fmjp2kTargets
-  FILE "${CMAKE_CURRENT_BINARY_DIR}/fmjp2k/fmjp2kTargets.cmake"  
+  FILE "${CMAKE_CURRENT_BINARY_DIR}/fmjp2k/fmjp2kTargets.cmake"
 )
 configure_file( ${CMAKE_SOURCE_DIR}/cmake/fmjp2kConfig.cmake.in
   ${CMAKE_CURRENT_BINARY_DIR}/fmjp2kConfig.cmake
