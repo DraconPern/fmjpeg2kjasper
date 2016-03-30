@@ -11,7 +11,7 @@ option(BUILD_SHARED_LIBS "Build fmjp2k shared library and link executables again
 
 find_package(dcmtk REQUIRED CONFIG HINTS ${DCMTK_DIR})
 
-INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR} ${DCMTK_INCLUDE_DIRS} ${JASPER}/src/libjasper/include)
+INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR} ${DCMTK_INCLUDE_DIRS} ${JASPER}/include)
 
 add_definitions(-DOPJ_STATIC)
 add_definitions(-Dfmjp2k_EXPORTS)
