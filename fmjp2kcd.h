@@ -5,15 +5,15 @@
 #include "dcmtk/ofstd/oftypes.h"
 #include "dcmtk/dcmdata/dccodec.h"  /* for class DcmCodec */
 
-class FMJPEG2KCodec: public DcmCodec
+class FMJP2KCodec: public DcmCodec
 {
 public:  
  
   /// default constructor
-  FMJPEG2KCodec();
+  FMJP2KCodec();
 
   /// destructor
-  virtual ~FMJPEG2KCodec();
+  virtual ~FMJP2KCodec();
 
   /** decompresses the given pixel sequence and
    *  stores the result in the given uncompressedPixelData element.
@@ -147,10 +147,10 @@ public:
 private:
 
   /// private undefined copy constructor
-  FMJPEG2KCodec(const FMJPEG2KCodec&);
+  FMJP2KCodec(const FMJP2KCodec&);
   
   /// private undefined copy assignment operator
-  FMJPEG2KCodec& operator=(const FMJPEG2KCodec&);
+  FMJP2KCodec& operator=(const FMJP2KCodec&);
 
   /** create Derivation Description.
    *  @param dataset dataset to be modified

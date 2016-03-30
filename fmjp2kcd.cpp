@@ -1,9 +1,9 @@
 #include "dcmtk/config/osconfig.h"
-#include "fmjpeg2kcd.h"
+#include "fmjp2kcd.h"
 #include <jasper/jasper.h>
 
 // dcmdata includes
-#include "fmjpeg2kcp.h"
+#include "fmjp2kcp.h"
 #include "dcmtk/dcmdata/dcdatset.h"  /* for class DcmDataset */
 #include "dcmtk/dcmdata/dcdeftag.h"  /* for tag constants */
 #include "dcmtk/dcmdata/dcpixseq.h"  /* for class DcmPixelSequence */
@@ -15,18 +15,18 @@
 #include "dcmtk/dcmjpeg/djutils.h" /* for enums */
 #include "dcmtk/ofstd/ofstd.h"
 
-FMJPEG2KCodec::FMJPEG2KCodec()        
+FMJP2KCodec::FMJP2KCodec()        
 	: DcmCodec()
 {
 	jas_init();
 }
 
-FMJPEG2KCodec::~FMJPEG2KCodec()
+FMJP2KCodec::~FMJP2KCodec()
 {
 	jas_cleanup();
 }
 
-OFBool FMJPEG2KCodec::canChangeCoding(
+OFBool FMJP2KCodec::canChangeCoding(
 	const E_TransferSyntax oldRepType,
 	const E_TransferSyntax newRepType) const
 {
@@ -44,7 +44,7 @@ OFBool FMJPEG2KCodec::canChangeCoding(
 	return OFFalse;
 }
 
-OFCondition FMJPEG2KCodec::determineDecompressedColorModel(
+OFCondition FMJP2KCodec::determineDecompressedColorModel(
 	const DcmRepresentationParameter * fromParam,
 	DcmPixelSequence * fromPixSeq,
 	const DcmCodecParameter * cp,
@@ -60,7 +60,7 @@ OFCondition FMJPEG2KCodec::determineDecompressedColorModel(
 	return result;
 }
 
-OFCondition FMJPEG2KCodec::decode(
+OFCondition FMJP2KCodec::decode(
 	const DcmRepresentationParameter * /* fromRepParam */,
 	DcmPixelSequence * pixSeq,
 	DcmPolymorphOBOW& uncompressedPixelData,
@@ -70,7 +70,7 @@ OFCondition FMJPEG2KCodec::decode(
 	OFCondition result = EC_Normal;
 
 	// assume we can cast the codec parameter to what we need
-	const FMJPEG2KCodecParameter *djcp = OFstatic_cast(const FMJPEG2KCodecParameter *, cp);
+	const FMJP2KCodecParameter *djcp = OFstatic_cast(const FMJP2KCodecParameter *, cp);
 
 	DcmStack localStack(objStack);
 	(void)localStack.pop();             // pop pixel data element from stack
@@ -372,7 +372,7 @@ OFCondition FMJPEG2KCodec::decode(
 }
 
 
-OFCondition FMJPEG2KCodec::decodeFrame(
+OFCondition FMJP2KCodec::decodeFrame(
 	const DcmRepresentationParameter * fromParam,
 	DcmPixelSequence * fromPixSeq,
 	const DcmCodecParameter * cp,
@@ -386,7 +386,7 @@ OFCondition FMJPEG2KCodec::decodeFrame(
 
 	OFCondition result = EC_Normal;
 	// assume we can cast the codec parameter to what we need
-	const FMJPEG2KCodecParameter *djcp = (const FMJPEG2KCodecParameter *)cp;
+	const FMJP2KCodecParameter *djcp = (const FMJP2KCodecParameter *)cp;
 
 	if ((!dataset)||((dataset->ident()!= EVR_dataset) && (dataset->ident()!= EVR_item))) result = EC_InvalidTag;
 	else
@@ -608,7 +608,7 @@ OFCondition FMJPEG2KCodec::decodeFrame(
 	return result;
 }
 
-OFCondition FMJPEG2KCodec::encode(
+OFCondition FMJP2KCodec::encode(
 	const Uint16 *pixelData,
 	const Uint32 length,
 	const DcmRepresentationParameter * /* toRepParam */ ,
@@ -619,7 +619,7 @@ OFCondition FMJPEG2KCodec::encode(
 	OFCondition result = EC_Normal;
 
 	// assume we can cast the codec parameter to what we need
-	const FMJPEG2KCodecParameter *djcp = OFstatic_cast(const FMJPEG2KCodecParameter *, cp);
+	const FMJP2KCodecParameter *djcp = OFstatic_cast(const FMJP2KCodecParameter *, cp);
 	DcmStack localStack(objStack);
 	(void)localStack.pop();             // pop pixel data element from stack
 	DcmObject *dataset = localStack.pop(); // this is the item in which the pixel data is located
@@ -856,7 +856,7 @@ OFCondition FMJPEG2KCodec::encode(
 }
 
 
-OFCondition FMJPEG2KCodec::encode(
+OFCondition FMJP2KCodec::encode(
 	const E_TransferSyntax /* fromRepType */,
 	const DcmRepresentationParameter * /* fromRepParam */,
 	DcmPixelSequence * /* fromPixSeq */,
@@ -870,7 +870,7 @@ OFCondition FMJPEG2KCodec::encode(
 }
 
 
-OFCondition FMJPEG2KCodec::updateDerivationDescription(
+OFCondition FMJP2KCodec::updateDerivationDescription(
 	DcmItem *dataset,
 	double ratio)
 {

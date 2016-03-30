@@ -5,10 +5,10 @@
 #include "dcmtk/config/osconfig.h"
 #include "dcmtk/ofstd/oftypes.h"  /* for OFBool */
 
-#include "fmjpeg2kcp.h"
-class FMJPEG2KCodec;
+#include "fmjp2kcp.h"
+class FMJP2KCodec;
 
-class FMJPEG2KCodecRegistration 
+class FMJP2KCodecRegistration 
 {
 public: 
   /** registers FMJPEG2KCodec.
@@ -32,19 +32,19 @@ public:
 private:
 
   /// private undefined copy constructor
-  FMJPEG2KCodecRegistration(const FMJPEG2KCodecRegistration&);
+  FMJP2KCodecRegistration(const FMJP2KCodecRegistration&);
   
   /// private undefined copy assignment operator
-  FMJPEG2KCodecRegistration& operator=(const FMJPEG2KCodecRegistration&);
+  FMJP2KCodecRegistration& operator=(const FMJP2KCodecRegistration&);
 
   /// flag indicating whether the decoder is already registered.
   static OFBool registered;
 
   /// pointer to codec parameter
-  static FMJPEG2KCodecParameter *cp;
+  static FMJP2KCodecParameter *cp;
   
   /// pointer to the decoder
-  static FMJPEG2KCodec *codec;
+  static FMJP2KCodec *codec;
 };
 
 #endif

@@ -1,7 +1,7 @@
 #include "dcmtk/config/osconfig.h"
-#include "fmjpeg2kcp.h"
+#include "fmjp2kcp.h"
 
-FMJPEG2KCodecParameter::FMJPEG2KCodecParameter(
+FMJP2KCodecParameter::FMJP2KCodecParameter(
     OFBool pVerbose,
     OFBool pCreateSOPInstanceUID,
     Uint32 pFragmentSize,
@@ -17,7 +17,7 @@ FMJPEG2KCodecParameter::FMJPEG2KCodecParameter(
 }
 
 
-FMJPEG2KCodecParameter::FMJPEG2KCodecParameter(const FMJPEG2KCodecParameter& arg)
+FMJP2KCodecParameter::FMJP2KCodecParameter(const FMJP2KCodecParameter& arg)
 : DcmCodecParameter(arg)
 , fragmentSize(arg.fragmentSize)
 , createOffsetTable(arg.createOffsetTable)
@@ -27,16 +27,16 @@ FMJPEG2KCodecParameter::FMJPEG2KCodecParameter(const FMJPEG2KCodecParameter& arg
 {
 }
 
-FMJPEG2KCodecParameter::~FMJPEG2KCodecParameter()
+FMJP2KCodecParameter::~FMJP2KCodecParameter()
 {
 }
   
-DcmCodecParameter *FMJPEG2KCodecParameter::clone() const
+DcmCodecParameter *FMJP2KCodecParameter::clone() const
 {
-  return new FMJPEG2KCodecParameter(*this);
+  return new FMJP2KCodecParameter(*this);
 } 
 
-const char *FMJPEG2KCodecParameter::className() const
+const char *FMJP2KCodecParameter::className() const
 {
   return "FMJPEG2KCodecParameter";
 }

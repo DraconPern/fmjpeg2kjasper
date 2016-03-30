@@ -4,7 +4,7 @@
 #include "dcmtk/config/osconfig.h"
 #include "dcmtk/dcmdata/dccodec.h" /* for DcmCodecParameter */
 
-class FMJPEG2KCodecParameter: public DcmCodecParameter
+class FMJP2KCodecParameter: public DcmCodecParameter
 {
 public:
 
@@ -20,7 +20,7 @@ public:
    *    be reversed upon decompression. Needed to correctly decode some incorrectly encoded
    *    images with more than one byte per sample.
    */
-  FMJPEG2KCodecParameter(
+  FMJP2KCodecParameter(
     OFBool pVerbose = OFFalse,
     OFBool pCreateSOPInstanceUID = OFFalse,
     Uint32 pFragmentSize = 0,
@@ -28,10 +28,10 @@ public:
     OFBool pConvertToSC = OFFalse);
 
   /// copy constructor
-  FMJPEG2KCodecParameter(const FMJPEG2KCodecParameter& arg);
+  FMJP2KCodecParameter(const FMJP2KCodecParameter& arg);
 
   /// destructor
-  virtual ~FMJPEG2KCodecParameter();
+  virtual ~FMJP2KCodecParameter();
 
   /** this methods creates a copy of type DcmCodecParameter *
    *  it must be overweritten in every subclass.
@@ -88,7 +88,7 @@ public:
 private:
 
   /// private undefined copy assignment operator
-  FMJPEG2KCodecParameter& operator=(const FMJPEG2KCodecParameter&);
+  FMJP2KCodecParameter& operator=(const FMJP2KCodecParameter&);
 
   /// maximum fragment size (in kbytes) for compression, 0 for unlimited.
   Uint32 fragmentSize;

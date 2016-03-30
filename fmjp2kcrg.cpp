@@ -1,36 +1,36 @@
 
 #include "dcmtk/config/osconfig.h"
-#include "fmjpeg2kcrg.h"
+#include "fmjp2kcrg.h"
 
 #include "dcmtk/dcmdata/dccodec.h"
-#include "fmjpeg2kcd.h" 
+#include "fmjp2kcd.h" 
 
 // initialization of static members
-OFBool FMJPEG2KCodecRegistration::registered = OFFalse;
-FMJPEG2KCodecParameter *FMJPEG2KCodecRegistration::cp = NULL;
-FMJPEG2KCodec *FMJPEG2KCodecRegistration::codec = NULL;
+OFBool FMJP2KCodecRegistration::registered = OFFalse;
+FMJP2KCodecParameter *FMJP2KCodecRegistration::cp = NULL;
+FMJP2KCodec *FMJP2KCodecRegistration::codec = NULL;
 
-void FMJPEG2KCodecRegistration::registerCodecs(
+void FMJP2KCodecRegistration::registerCodecs(
 	OFBool pCreateSOPInstanceUID,
 	OFBool pVerbose)
 {
 	if (! registered)
 	{
-		cp = new FMJPEG2KCodecParameter(
+		cp = new FMJP2KCodecParameter(
 			pVerbose,
 			pCreateSOPInstanceUID,
 			0, OFTrue, OFFalse);
 
 		if (cp)
 		{
-			codec = new FMJPEG2KCodec();
+			codec = new FMJP2KCodec();
 			if (codec) DcmCodecList::registerCodec(codec, NULL, cp);
 			registered = OFTrue;
 		}
 	}
 }
 
-void FMJPEG2KCodecRegistration::cleanup()
+void FMJP2KCodecRegistration::cleanup()
 {
 	if (registered)
 	{
