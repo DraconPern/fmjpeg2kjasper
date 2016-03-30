@@ -1,0 +1,38 @@
+#-----------------------------------------------------------------------------
+#
+# fmjp2kConfig.cmake - CMake configuration file for external projects.
+#
+# This file is configured by fmjp2k and used by the Usefmjp2k.cmake
+# module to load fmjp2k's settings for an external project.
+@fmjp2k_CONFIG_INSTALL_ONLY@
+# The fmjp2k version number.
+#set(fmjp2k_MAJOR_VERSION "@fmjp2k_VERSION_MAJOR@")
+#set(fmjp2k_MINOR_VERSION "@fmjp2k_VERSION_MINOR@")
+#set(fmjp2k_BUILD_VERSION "@fmjp2k_VERSION_BUILD@")
+
+set(FMJP2K_LIBRARIES fmjp2k)
+
+# The configuration options.
+set(fmjp2k_BUILD_SHARED_LIBS "@BUILD_SHARED_LIBS@")
+
+get_filename_component(SELF_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
+if(EXISTS ${SELF_DIR}/fmjp2kTargets.cmake)
+  # This is an install tree
+  include(${SELF_DIR}/fmjp2kTargets.cmake)
+  get_filename_component(fmjp2k_INCLUDE_ROOT "${SELF_DIR}/../../../include" ABSOLUTE)
+  set(FMJP2K_INCLUDE_DIRS ${fmjp2k_INCLUDE_ROOT})  
+else()
+  if(EXISTS ${SELF_DIR}/fmjp2kExports.cmake)
+    # This is a build tree
+    set( FMJP2K_INCLUDE_DIRS @fmjp2k_INCLUDE_PATH@)
+
+    include(${SELF_DIR}/fmjp2kExports.cmake)
+
+  else()
+    message(FATAL_ERROR "ooops")
+  endif()
+endif()
+
+# Backward compatible part:
+set(fmjp2k_FOUND       TRUE)
+message(STATUS "FMJP2K_INCLUDE_DIRS ${FMJP2K_INCLUDE_DIRS} FMJP2K_LIBRARIES ${FMJP2K_LIBRARIES}")
