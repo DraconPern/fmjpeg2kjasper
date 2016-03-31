@@ -9,7 +9,7 @@ set(fmjp2k_VERSION "${fmjp2k_VERSION_MAJOR}.${fmjp2k_VERSION_MINOR}.${fmjp2k_VER
 
 option(BUILD_SHARED_LIBS "Build fmjp2k shared library and link executables against it." ON)
 
-find_package(dcmtk REQUIRED CONFIG HINTS ${DCMTK_DIR})
+find_package(DCMTK REQUIRED CONFIG HINTS ${DCMTK_DIR})
 
 INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR} ${DCMTK_INCLUDE_DIRS} ${JASPER}/include)
 
