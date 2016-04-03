@@ -82,7 +82,7 @@ write_basic_package_version_file(
   COMPATIBILITY AnyNewerVersion
 )
 
-export(EXPORT fmjp2kTargets
+export(TARGETS fmjp2k
   FILE "${CMAKE_CURRENT_BINARY_DIR}/fmjp2k/fmjp2kTargets.cmake"
 )
 configure_file( ${CMAKE_SOURCE_DIR}/cmake/fmjp2kConfig.cmake.in
